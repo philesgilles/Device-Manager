@@ -1,0 +1,315 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'PGP device manager API'
+host: 'localhost:3000'
+basePath: '/'
+schemes:
+  - 'http'
+  - 'https'
+consumes:
+  - 'application/json'
+  - 'application/x-www-form-urlencoded'
+produces:
+  - 'application/json'
+paths:
+
+## CALIBRATIONS ROUTES
+
+  /calibrations:
+    get:
+      tags:
+        - 'calibrations'
+      summary: 'Get all calibrations'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No calibration found'
+    post:
+      tags:
+        - 'calibrations'
+      summary: 'post New calibration'
+      parameters:
+        - in: "body"
+          name: "new calibration"
+          description: "calibration that needs to be added the system"
+          required: true
+          schema:
+            $ref: "#/definitions/Calibration"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No calibration found'
+  /calibrations/{calibrationId}:
+    get:
+      tags:
+        - 'calibrations'
+      summary: 'Get all calibrations'
+      parameters:
+      - name: "calibrationId"
+        in: "path"
+        description: "one calibration to return database ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No calibration found'
+          
+## SENSORS ROUTES
+ 
+  /sensors:
+    get:
+      tags:
+        - 'Sensors'
+      summary: 'Get all sensors'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No sensor found'
+  /sensors/{sensorId}/all:
+    get:
+      tags:
+        - 'Sensors'
+      summary: "Get the sensor's all informations"
+      parameters:
+      - name: "sensorId"
+        in: "path"
+        description: "ID sensor to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No sensor found'
+  /sensors/{sensorId}/calibration:
+    get:
+      tags:
+        - 'Sensors'
+      summary: 'Get valid sensor from sensor'
+      parameters:
+      - name: "sensorId"
+        in: "path"
+        description: "ID sensor to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No sensor found'
+  /sensors/{sensorId}/calibrations:
+    get:
+      tags:
+        - 'Sensors'
+      summary: 'Get all the calibrations from sensor'
+      parameters:
+      - name: "sensorId"
+        in: "path"
+        description: "ID sensor to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No sensor found'
+  /sensors/{sensorId}/equipment:
+    get:
+      tags:
+        - 'Sensors'
+      summary: "Get sensor's linked equipment"
+      parameters:
+      - name: "sensorId"
+        in: "path"
+        description: "ID sensor to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No sensor found'
+
+## DEVICES ROUTES
+
+  /devices:
+    get:
+      tags:
+        - 'Devices'
+      summary: 'Get all devices'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No calibration found'
+  /devices/{deviceId}:
+    get:
+      tags:
+        - 'Devices'
+      summary: "Get selected device all informations"
+      parameters:
+      - name: "deviceId"
+        in: "path"
+        description: "ID sensor to return type FFFF0001"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No devices found'
+          
+## DEVICESTYPES ROUTES
+
+  /deviceTypes:
+    get:
+      tags:
+        - 'Device Types'
+      summary: 'Get all device Types'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No device type found'
+  /deviceTypes/{deviceTypeId}:
+    get:
+      tags:
+        - 'Device Types'
+      summary: "Get selected device type informations"
+      parameters:
+      - name: "deviceTypeId"
+        in: "path"
+        description: "ID sensor to return type database ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No device type found'
+          
+          
+## USERS ROUTES
+
+  /users:
+    get:
+      tags:
+        - 'Users'
+      summary: 'Get all users'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No users found'
+  /users/{userId}:
+    get:
+      tags:
+        - 'Users'
+      summary: "Get selected devices type informations"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "userId to return - type database ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No users found'
+          
+## ORGANISATIONS ROUTES
+
+  /organisations:
+    get:
+      tags:
+        - 'organisations'
+      summary: 'Get all organisations'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No organisations found'
+  /organisations/{organisationId}:
+    get:
+      tags:
+        - 'organisations'
+      summary: "Get selected organisation informations"
+      parameters:
+      - name: "organisationId"
+        in: "path"
+        description: "ID organiation to return - type database ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No organisation found'
+          
+## EQUIPMENTS ROUTES
+
+  /equipments:
+    get:
+      tags:
+        - 'equipments'
+      summary: 'Get all equipments'
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No equipments found'
+  /equipments/{equipmentsId}:
+    get:
+      tags:
+        - 'equipments'
+      summary: "Get selected equipment information"
+      parameters:
+      - name: "equipmentsId"
+        in: "path"
+        description: "ID equipments to return - type unique ID"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: 'ok'
+        404:
+          description: 'No equipment found'
+          
+## DEFINITIONS
+
+definitions:
+  Calibration:
+    type: "object"
+    properties:
+      calibrationNumber:
+        type: "string"
+      values:
+        type: "object"
+        properties:
+          calA:
+            type: "integer"
+            format: "float"
+          calB: 
+            type: "integer"
+            format: "float"
+          calC: 
+            type: "integer"
+            format: "float"
+          validFrom: 
+            type: "string"
+            format: "date-time"
+          ValidTo: 
+            type: "string"
+            format: "date-time"
+      sensorId:
+        type: "string"
+        format: "int32"
+    xml:
+      name: "Calibration"

@@ -1,0 +1,9 @@
+{
+  "env": {
+    "mongoUSER": "",
+    "mongoPW": "",
+    "mongoURL": "",
+    "BCRYPT_SALT": "GiveMeSomeCryptoSecurity",
+    "PORT": 3000
+  }
+}

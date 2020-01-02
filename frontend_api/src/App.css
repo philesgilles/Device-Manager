@@ -1,0 +1,36 @@
+.main-content {
+  margin: 4rem 1rem;
+}
+
+.tableCentered {
+  text-align: center;
+}
+
+.dataTables_filter {
+  float: right;
+}
+
+.beautySelect {
+  width: calc(100% - 40px) !important;
+  margin: 0px 0px 40px 40px !important;
+  border-radius: 0.25rem !important;
+  padding: 5px !important;
+  color: #757575 !important;
+  float: right;
+}
+
+.margin40 {
+  margin-left: 40px;
+  color: #757575;
+}
+
+.select-label {
+  height: 0;
+}
+
+.auth-form {
+  widows: 40rem;
+  max-width: 80%;
+  width: 580px;
+  margin: 0 auto;
+}
